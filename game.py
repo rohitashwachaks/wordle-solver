@@ -4,16 +4,22 @@ import pandas as pd
 import numpy as np
 
 #%%
+from typing import Union
+from termcolor import colored
+import pandas as pd
+import numpy as np
+
+#%%
 class Wordle:
     @classmethod
     def __set_riddle__(self, path_to_vocabulary):
 
         with open(path_to_vocabulary,'r') as f:
             self.dictionary = {t for t in f.readlines()[0].split(",")}
-        # print(self.dictionary)
-        self.word = self.dictionary[np.random.randint(low = 0, high = (len(self.dictionary)))]
-        # word = [list(x) for x in self.dictionary]
-        # self.word = pd.DataFrame(word)
+        
+        rand_pick = np.random.randint(low = 0, high = (len(self.dictionary)))
+        
+        self.wordle = list(self.dictionary)[rand_pick]
         return
 
     def __init__(self, dictionary_path = "wordle.txt"):
@@ -76,3 +82,5 @@ class Wordle:
             for t in arr:
                 print(t,end="")
             print()
+        return
+# %%
